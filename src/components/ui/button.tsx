@@ -15,11 +15,23 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // === COSMIC HUB VARIANTS ===
+        cosmic: "bg-cosmic-star text-cosmic-space hover:bg-cosmic-star/90 shadow-lg hover:shadow-xl transition-all duration-300",
+        "cosmic-outline": "border-2 border-cosmic-star text-cosmic-star hover:bg-cosmic-star hover:text-cosmic-space bg-transparent backdrop-blur-sm",
+        // === SPOTLIGHT STUDIOS VARIANTS ===
+        spotlight: "bg-spotlight-red text-white hover:bg-spotlight-red/90 shadow-lg hover:shadow-xl transition-all duration-300",
+        "spotlight-gold": "bg-spotlight-gold text-spotlight-black hover:bg-spotlight-gold/90 shadow-lg hover:shadow-xl transition-all duration-300",
+        "spotlight-outline": "border-2 border-spotlight-gold text-spotlight-gold hover:bg-spotlight-gold hover:text-spotlight-black bg-transparent",
+        // === DISCO TRAVELS VARIANTS ===
+        disco: "bg-disco-turquoise text-white hover:bg-disco-turquoise/90 shadow-lg hover:shadow-xl transition-all duration-300",
+        "disco-gradient": "bg-gradient-to-r from-disco-turquoise to-disco-orange text-white hover:from-disco-orange hover:to-disco-magenta transition-all duration-300",
+        "disco-outline": "border-2 border-disco-magenta text-disco-magenta hover:bg-disco-magenta hover:text-white bg-transparent",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-14 rounded-lg px-12 text-lg font-semibold",
         icon: "h-10 w-10",
       },
     },

@@ -57,6 +57,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // === COSMIC HUB COLORS ===
+        cosmic: {
+          space: "hsl(var(--cosmic-space))",
+          nebula: "hsl(var(--cosmic-nebula))",
+          star: "hsl(var(--cosmic-star))",
+          gold: "hsl(var(--cosmic-gold))",
+        },
+        // === SPOTLIGHT STUDIOS COLORS ===
+        spotlight: {
+          black: "hsl(var(--spotlight-black))",
+          charcoal: "hsl(var(--spotlight-charcoal))",
+          red: "hsl(var(--spotlight-red))",
+          gold: "hsl(var(--spotlight-gold))",
+        },
+        // === DISCO TRAVELS COLORS ===
+        disco: {
+          turquoise: "hsl(var(--disco-turquoise))",
+          orange: "hsl(var(--disco-orange))",
+          magenta: "hsl(var(--disco-magenta))",
+          yellow: "hsl(var(--disco-yellow))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
