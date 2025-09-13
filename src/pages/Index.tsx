@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
 import { Camera, Plane, Star, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Reviews } from "@/components/Reviews";
+import { Testimonials } from "@/components/Testimonials";
 import cosmicHero from "@/assets/cosmic-hero.jpg";
 
 const Index = () => {
@@ -14,9 +16,20 @@ const Index = () => {
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const contactData = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message')
+    };
+    
+    // TODO: Implement email sending to unityspacehub@gmail.com
+    console.log('Contact form data:', contactData);
+    
     toast({
       title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you soon.",
+      description: "Thank you for reaching out. We'll get back to you soon at unityspacehub@gmail.com",
     });
   };
 
@@ -182,6 +195,12 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <Reviews variant="hub" />
+
+      {/* Testimonials Section */}
+      <Testimonials variant="hub" />
+
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4">
         <div className="container mx-auto max-w-2xl">
@@ -203,6 +222,7 @@ const Index = () => {
                       Name
                     </label>
                     <Input 
+                      name="name"
                       required 
                       className="bg-cosmic-space/30 border-cosmic-star/30 focus:border-cosmic-star"
                     />
@@ -212,6 +232,7 @@ const Index = () => {
                       Email
                     </label>
                     <Input 
+                      name="email"
                       type="email" 
                       required 
                       className="bg-cosmic-space/30 border-cosmic-star/30 focus:border-cosmic-star"
@@ -223,6 +244,7 @@ const Index = () => {
                     Subject
                   </label>
                   <Input 
+                    name="subject"
                     required 
                     className="bg-cosmic-space/30 border-cosmic-star/30 focus:border-cosmic-star"
                   />
@@ -232,6 +254,7 @@ const Index = () => {
                     Message
                   </label>
                   <Textarea 
+                    name="message"
                     required 
                     rows={4}
                     className="bg-cosmic-space/30 border-cosmic-star/30 focus:border-cosmic-star resize-none"

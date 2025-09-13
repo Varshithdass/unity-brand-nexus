@@ -7,6 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Film, Edit, Palette, Star, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { Reviews } from "@/components/Reviews";
+import { Testimonials } from "@/components/Testimonials";
 import spotlightHero from "@/assets/spotlight-hero.jpg";
 
 const SpotlightStudios = () => {
@@ -14,9 +17,20 @@ const SpotlightStudios = () => {
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const contactData = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      projectType: formData.get('projectType'),
+      message: formData.get('message')
+    };
+    
+    // TODO: Implement email sending to unityspacehub@gmail.com
+    console.log('Spotlight Studios inquiry:', contactData);
+    
     toast({
       title: "Inquiry Sent!",
-      description: "Thank you for your interest. We'll contact you within 24 hours.",
+      description: "Thank you for your interest. We'll contact you within 24 hours at unityspacehub@gmail.com",
     });
   };
 
@@ -150,19 +164,14 @@ const SpotlightStudios = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {portfolioItems.map((item, index) => (
-              <Card key={index} className="spotlight-card group cursor-pointer overflow-hidden">
-                <div className="aspect-video bg-spotlight-charcoal flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
-                  {item.image}
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <CardTitle className="text-lg text-spotlight-gold">{item.title}</CardTitle>
-                    <Badge className="bg-spotlight-red/20 text-spotlight-red border-spotlight-red/30">
-                      {item.category}
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
+              <PhotoPlaceholder
+                key={index}
+                title={item.title}
+                description={item.category}
+                variant="spotlight"
+                size="lg"
+                className="cursor-pointer"
+              />
             ))}
           </div>
 
@@ -173,6 +182,12 @@ const SpotlightStudios = () => {
           </div>
         </div>
       </section>
+
+      {/* Reviews Section */}
+      <Reviews variant="spotlight" />
+
+      {/* Testimonials Section */}
+      <Testimonials variant="spotlight" />
 
       {/* Contact Section */}
       <section className="py-20 px-4 bg-spotlight-charcoal/50">
@@ -195,6 +210,7 @@ const SpotlightStudios = () => {
                       Name
                     </label>
                     <Input 
+                      name="name"
                       required 
                       className="bg-spotlight-black/50 border-spotlight-gold/30 focus:border-spotlight-gold text-white"
                     />
@@ -204,6 +220,7 @@ const SpotlightStudios = () => {
                       Email
                     </label>
                     <Input 
+                      name="email"
                       type="email" 
                       required 
                       className="bg-spotlight-black/50 border-spotlight-gold/30 focus:border-spotlight-gold text-white"
@@ -215,6 +232,7 @@ const SpotlightStudios = () => {
                     Project Type
                   </label>
                   <Input 
+                    name="projectType"
                     placeholder="Photography, Film, Branding, etc."
                     className="bg-spotlight-black/50 border-spotlight-gold/30 focus:border-spotlight-gold text-white"
                   />
@@ -224,6 +242,7 @@ const SpotlightStudios = () => {
                     Project Details
                   </label>
                   <Textarea 
+                    name="message"
                     required 
                     rows={4}
                     placeholder="Tell us about your vision, timeline, and budget..."

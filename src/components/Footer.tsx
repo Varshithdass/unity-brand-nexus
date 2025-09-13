@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Home, Star, Camera, Plane } from "lucide-react";
+import { Home, Star, Camera, Plane, MapPin, Linkedin, Instagram, Youtube } from "lucide-react";
 
 interface FooterProps {
   variant?: "hub" | "spotlight" | "disco";
@@ -61,6 +61,38 @@ export const Footer = ({ variant = "hub" }: FooterProps) => {
 
           <div className="space-y-4">
             <h3 className={`font-semibold ${getIconColor()}`}>Connect</h3>
+            
+            {/* Location */}
+            <Link to="/location" className="flex items-center space-x-2 text-muted-foreground hover:text-cosmic-star transition-colors">
+              <MapPin className="w-4 h-4" />
+              <span>Our Location</span>
+            </Link>
+            
+            {/* Social Media */}
+            <div className="flex space-x-4">
+              <a 
+                href="#" 
+                className="text-muted-foreground hover:text-blue-600 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href="#" 
+                className="text-muted-foreground hover:text-pink-600 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="#" 
+                className="text-muted-foreground hover:text-red-600 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+            </div>
+            
             {variant !== "hub" && (
               <Link to="/">
                 <Button variant="cosmic-outline" size="sm" className="mb-2">
